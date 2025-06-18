@@ -3,10 +3,10 @@ const HomePage = require('../pageobjects/home.page')
 
 describe('Frames Test', () => {
     it('Should go to the Frames page and check the title', async () => {
-        await HomePage.open();          // Abre la página principal
-        await HomePage.goToFrames();   // Hace clic en "Frames"
+        await HomePage.open();          // Main page
+        await HomePage.goToFrames();   // Click to frames
 
-        // Verifica que se muestra el título "Frames"
+        // Verification of Frames title
         const title = await $('h3');
         await title.waitForDisplayed();
         const text = await title.getText();
@@ -21,9 +21,9 @@ describe('Nested Frames Test', () => {
         await HomePage.goToFrames();
         await HomePage.goToNestedFrames();
 
-        await browser.pause(2000); // pausa 2 segundos
+        await browser.pause(2000); // pause 2 seg
 
-        // Cambiar al frame
+        // Chnage frame
         browser.switchToFrame($("frame[name='frame-bottom']"))
       //identify element with tagname
       const buttomFrame = $('<body>')
@@ -48,10 +48,9 @@ describe('Nested Frames Test', () => {
       //switch to main page
       browser.switchToFrame(null) 
 
-        // Regresar a la página anterior (frames)
+        // Back (frames)
         await browser.back();
 
-        // Puedes agregar una pausa si quieres ver la página anterior
         await browser.pause(2000);
 
     });
